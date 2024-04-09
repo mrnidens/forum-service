@@ -1,2 +1,8 @@
-package ait.cohort34.post.dto;public class NewCommentDto {
+package ait.cohort34.post.dto;
+
+import lombok.Getter;
+
+@Getter
+public class NewCommentDto {
+    String message;
 }
