@@ -66,6 +66,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         if (!isAddRole) {
             userAccount.removeRole(role);
         }
+        accountRepository.save(userAccount);
         return modelMapper.map(userAccount, RolesDto.class);
     }
 
