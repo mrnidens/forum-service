@@ -59,7 +59,14 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     @Override
     public RolesDto changeRolesList(String login, String role, boolean isAddRole) {
-        return null;
+        UserAccount userAccount = accountRepository.findById(login).orElseThrow(UserNotFoundException::new);
+        if (isAddRole) {
+            userAccount.addRole(role);
+        }
+        if (!isAddRole) {
+            userAccount.removeRole(role);
+        }
+        return modelMapper.map(userAccount, RolesDto.class);
     }
 
     @Override
